@@ -1,0 +1,159 @@
+<!-- File: index.html
+    GUI Assignment: HW5 Scrabble
+        Create a mini version of the game Scrabble
+    Sofya Chow, Sofya_Chow@student.uml.edu
+    Last Updated On: December 15, 2021    -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Scrabble</title>
+    
+    <!-- Used bootstrap to format two columns (one with directions and one with the game implementation) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <style>
+        .letter_tiles {
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin: 10px 5px 10px 0;
+        }
+
+        .droppable_tiles {
+            width: 110px;
+            height: 110px;
+            padding: 0px;
+            padding: 0.5em;
+            display: inline-block;
+        }
+
+        body {
+            background: url(images/white_background.jpeg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        h {
+            font-family: monaco;
+            font-size: 50px;
+            color: black;
+
+        }
+
+        ul {
+            font-family: monaco;
+            font-size: 20px;
+            color: black;
+
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .whitebox {
+            width: 100%;
+            height: 90%;
+            padding: 30px;
+            line-height: 1.75;
+        }
+
+        #droppable_rack {
+            margin: auto;
+            width: 750px;
+            height: 150px;
+            background-image: url("images/rack.png")
+        }
+
+        /* https://stackoverflow.com/questions/147528/how-do-i-force-a-div-block-to-extend-to-the-bottom-of-a-page-even-if-it-has-no-c */
+        .col-md-4 {
+            background-color: white;
+            min-height: 100vh;
+        }
+
+        .button_style {
+            background-color: white;
+            border: 3px solid white;
+            color: black;
+            padding: 7px;
+            text-align: center;
+            font-size: 25px;
+            font-family: Monaco;
+            border-radius: 8px;
+            margin: 0px 30px 0px 30px;
+        }
+
+        .bg-change {
+            border: 3px solid rgb(117, 156, 117);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class='whitebox'>
+                    <div style="text-align: center"><img src="images/scrabble_logo.png" alt="Scrabble Logo" width="270"
+                            height="220"></div>
+                    <h>Rules:</h>
+                    <ul>
+                        <li>Drag letters onto the board to form a consecutive word</li>
+                        <li>Tap on <b>Next Word</b> to continue playing</li>
+                        <li>Tap on <b>Start Over</b> to refresh score, board and rack</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="center">
+                    <br><br>
+                    <h style="font-size: 30px">Word: <span id="word"></span>
+                    </h>
+                    <br>
+                    <h style="font-size: 30px">Score: <span id="currentScore"></span>
+                    </h>
+                    <br>
+                    <h style="font-size: 30px">Remaining Tiles: <span id="remainingTiles"></span>
+                    </h>
+                    <br>
+                    <h style="font-size: 30px">Highest Score: <span id="highestScore"></span>
+                    </h>
+                    <br><br>
+
+                    <div id="gameboard" class="center">
+                        <div class="droppable_tiles one" style="background-image: url(images/blank_tile.png)"></div>
+                        <div class="droppable_tiles two double" style="background-image: url(images/double_score_tile.png)"></div>
+                        <div class="droppable_tiles three" style="background-image: url(images/blank_tile.png)"></div>
+                        <div class="droppable_tiles four" style="background-image: url(images/blank_tile.png)"></div>
+                        <div class="droppable_tiles five" style="background-image: url(images/blank_tile.png)"></div>
+                        <div class="droppable_tiles six double" style="background-image: url(images/double_score_tile.png)"></div>
+                        <div class="droppable_tiles seven" style="background-image: url(images/blank_tile.png)"></div>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="button_style" id="next_word_button" type="button" onclick="next_word()">Next Word</button>
+                        <button class="button_style" type="button" onclick="restart_game()">Start Over</button>
+                    </div>
+
+                    <br>
+                    <div id="droppable_rack"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/myscript.js"></script>
+</body>
+</html>
