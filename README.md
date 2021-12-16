@@ -24,4 +24,4 @@ Each time a letter tile is dropped onto a board square, the board square assigns
 ******************************
 Since the word and score displayed on the scoreboard has to dynamically change when a letter tile is dropped on the rack as well, this function deals with this behavior as well. Similar to drop_on_board(), a for loop will traverse through objects of class “droppable_tiles” to grab the children of each <div> and determine the total word. Since the “innerletter” may change, remove this id if so. The algorithm for drop_on_rack() is very similar to drop_on_board() since each time a letter tile is moved, the same behavior should be produced.
 
-The remaining functions deal with updating the scoreboard and requires HTML DOM document objects to be called and to update its values using basic arithmetic.
+The remaining functions deal with updating the scoreboard and requires HTML DOM document objects to be called and to update its values using basic arithmetic. All functionalities should be complete.
